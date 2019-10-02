@@ -21,8 +21,19 @@ def add(prompt, strings):
 
 def user_actions(user, items):
     view(f"Wellcome {user}", items)
-    menu("select an action", "option", items)
-    
+    while True:
+        o = menu("select an action", "option: ", options1)
+        if(o == "a"):
+            add("Add item: ", items)
+            view("These are your items: ", items)
+        elif(o == "l"):
+            view("These are your items: ", items)
+        else:
+            return items
+
+options1 = {"a":"Add item", "l":"List items", "q":"Log out"}
+options2 = {"r":"Try again", "q":"Quit"}
+
 user1 = "nisse"
 user2 = "bosse"
 
@@ -36,3 +47,5 @@ print()
 user_actions(user2, items2)
 print(f"Goodbye {user2}, your items: {items2}")
 print()
+
+#exec(open("user-actions.py").read())

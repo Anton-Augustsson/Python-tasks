@@ -1,6 +1,0 @@
-names = ["nisse", "stina", "bosse", "mimmi"]
-
-x = 1
-for n in names:
-    x += 1
-    print(f"{n}")

@@ -1,5 +1,0 @@
-ducks = ["knatte", "fnatte", "tjatte"]
-print(ducks)
-
-
-# exec(open("add-v1.py").read())

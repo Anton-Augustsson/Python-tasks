@@ -1,0 +1,4 @@
+users = {"nisse":"apa", "bosse":"ko", "stina":"t-rex"}
+
+
+#exec(open("dictionaries.py").read())

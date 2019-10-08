@@ -1,3 +1,4 @@
+from random import randint
 
 #exec(open("biathlon.py").read())
 
@@ -29,7 +30,25 @@ def new_targets():
         
     return list
 
+def hits(targets):
+    print()
+
+def random_hit():
+    value = randint(0,1)
+    if(value == 1):
+        return False
+    else:
+        return True
+
+def shoot(targets, target):
+    value = random_hit()
+    if(value == True):
+        print('Hit on closed target')
+    else:
+        print('Miss')
+
 ####################### Testfall
+### Test is open
 #a = open()
 #b = closed()
 #is_open(a)
@@ -37,10 +56,27 @@ def new_targets():
 #is_open(open())
 #is_open(closed())
 
+### Test is closed
 #is_closed(a)
 #is_closed(b)
 #is_closed(open())
 #is_closed(closed())
 
+### Test new_target
 #splash()
 #print(new_targets())
+
+### Test hits
+#ts = new_targets()
+#ts
+#hits(ts)
+#close_target(2, ts)
+
+### Test random_hit
+#for _ in range(5):
+#    print(random_hit())
+
+### Test Shoot
+#ts = new_targets()
+#view_targets(ts)
+#shoot(ts, 0)

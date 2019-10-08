@@ -11,23 +11,10 @@ print('Användare')
 for n in users:
     print(f"    {n}")
 
-#print('Användare och Lösenord')
-#for n in users:
-#    print(f"    {n}) {users[n]}")
-
-## eller så här:
 view("Användare och Lösenord", users)
-
-
-#print('Användare och deras data')
-#for n in data:
-#    print(f"    {n}) {data[n]}")
-
-## eller så här:
 view("Användare och deras data", data)
 
-
-andvändare = input('Användare:')
+andvändare = input('Användare: ')
 if andvändare in data:
     print(f"Data lagrat för {andvändare}: {data[andvändare]}")
 else:

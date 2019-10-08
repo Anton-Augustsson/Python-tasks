@@ -8,8 +8,8 @@ def add(prompt, strings):
     return strings
 
 strings = []
-
-for n in range(int(input('n = '))):
+times = int(input('n = '))
+for n in range(times):
     add("Lägg till en sträng: ", strings)
 
-view("Du har matat in följande n strängar", strings)
+view(f"Du har matat in följande {times} strängar", strings)

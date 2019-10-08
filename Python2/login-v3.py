@@ -20,13 +20,13 @@ def login(users):
             print("Invalid username or password")
             o = menu("What do you want to do?", "Option: ", options2)
             if(str(o) == "q"):
-                break
+                break 
 
 
 options2 = {"r":"Try again", "q":"Quit"}
 options1 = {"a":"Add item", "l":"List items", "q":"Log out"}
-
-
 users = {"nisse":"apa", "stina":"t-rex", "bosse":"ko"}
 
 user = login(users)
+
+#exec(open("login-v3.py").read())

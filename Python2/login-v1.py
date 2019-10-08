@@ -5,6 +5,7 @@ def login(users):
         User = input("User: ")
         Password = input("Password: ")
         if User in users and Password == users[User]:
+            print(f"Welcome {User}")
             break
         else:
             print("Invalid username or password")

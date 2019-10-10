@@ -11,9 +11,9 @@ def blank_screen(times, sleep):
         print()
         
 def logo(n):
-    blank_screen(40, 0)
-    print(f"{n}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n{n}             Biathlon \n{n}           one hit a way \n\n{n}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n", end="\r")
-    blank_screen(40, 0)
+    blank_screen(4, 0)
+    print(f"{n}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n{n}             Biathlon \n{n}           one hit a way \n\n{n}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n")
+    blank_screen(2, 0)
 
 def bouncing_logo(c):
     times = len(c)
@@ -48,7 +48,7 @@ def splash_extra():
     what_is(game_title)  
     it_is(game_title)  
     bouncing_logo(c)  
-    logo(c)  
+    logo("")  
     
 ###########################
 
@@ -57,25 +57,25 @@ def splash():
     #print(' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n             Biathlon \n           one hit a way \n\n ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
     
 def open():
-    return 1
-
-def closed():
     return 0
 
+def closed():
+    return 1
+
 def is_open(target):
-    if(target == 1):
+    if(target == open()):
         return True
     else:
         return False
 
 def is_closed(target):
-    if(target == 1):
-        return False
-    else:
+    if(target == closed()):
         return True
+    else:
+        return False
 
 def new_targets():
-    list = [closed(), closed(), closed(), closed(), closed()]
+    list = [open(), open(), open(), open(), open()]
     #for n in range(5):
     #    list.append(closed())
         
@@ -109,9 +109,7 @@ def targets_to_string(targets):
 
 
 def view_targets(targets):
-    print()
-    print("0 1 2 3 4")
-    print()
+    print("\n1 2 3 4 5 \n")
     print(targets_to_string(targets))         
     return None
 
@@ -125,16 +123,45 @@ def random_hit():
 
 def shoot(targets, target):
     slump = random_hit()
-    if(is_open(targets[target]) == False):
+    if(is_open(targets[target]) == True):
         if(slump == True):
             close_target(target, targets)
-            return 'Hit on open target'
+            return '\n Hit on open target'
         else:
-            return 'Miss'
+            return '\n Miss'
 
     else:
-        return 'Hit on closed target'
-    
+        return '\n Hit on closed target'
+
+def parse_target(string):
+    if(string.isnumeric() == True):
+        integer = int(string)
+        if(1 <= integer and integer <= 5):
+            return integer - 1
+        else:
+            return None
+
+def main():
+    splash()
+    print('You got 5 shots\n')
+    ts = new_targets()
+    view_targets(ts)
+    for n in range(1, 6):
+        while True:
+            shot = input(f"\n\n Shot nr {n} at: ")
+            valid_shot = parse_target(shot)
+            if(valid_shot == None):
+                print(f"Your {n} is Invalid target: {shot}")
+            else:
+                print(shoot(ts, valid_shot))
+                view_targets(ts)
+                break
+    print(f"\n\n You hit {hits(ts)} of 5 targets")
+
+
+
+main()
+
 ####################### Testfall
 ### Test is open
 #a = open()
@@ -170,15 +197,19 @@ def shoot(targets, target):
 #shoot(ts, 0)
 
 ### Test Felix kod
+#ts = new_targets()
+#print(ts)
+#print(close_target(0, ts))
+#print(close_target(4, ts))
 #print(target_to_string(open()))
 #print(target_to_string(closed()))
-t = new_targets()
-print(t)
-print(targets_to_string(t))
-close_target(0, t)
-print(targets_to_string(t))
-close_target(3, t)
-print(targets_to_string(t))
+#t = new_targets()
+#print(t)
+#print(targets_to_string(t))
+#close_target(0, t)
+#print(targets_to_string(t))
+#close_target(3, t)
+#print(targets_to_string(t))
 #ts = new_targets()
 #print(view_targets(ts))
 #close_target(0, ts)
@@ -199,3 +230,4 @@ print(targets_to_string(t))
 #view_targets(ts)
 #print(shoot(ts, 4))
 #view_targets(ts)
+

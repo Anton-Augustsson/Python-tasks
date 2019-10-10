@@ -81,23 +81,60 @@ def new_targets():
         
     return list
 
+def close_target(target, targets):
+    targets[target] = closed()
+    return targets
+
+
 def hits(targets):
+    counter = 0
+    for x in range(len(targets)):
+        if(is_closed(targets[x]) == True): ## ifall den är stängd är sant går countern upp vilket är anledning till ovanstående ändring
+            counter+=1
+    return counter
+
+
+def target_to_string(target):
+    if(is_open(target) == True):
+        return "* "
+    elif(is_closed(target) == True):
+        return "O "
+
+    
+def targets_to_string(targets):
+    s = ""
+    for x in range(len(targets)):
+        s = s + target_to_string(targets[x])
+    return s
+
+
+def view_targets(targets):
     print()
+    print("0 1 2 3 4")
+    print()
+    print(targets_to_string(targets))         
+    return None
+
 
 def random_hit():
-    value = randint(0,1)
-    if(value == 1):
+    slump = randint(0,1)
+    if(slump == 1):
         return False
     else:
         return True
 
 def shoot(targets, target):
-    value = random_hit()
-    if(value == True):
-        print('Hit on closed target')
-    else:
-        print('Miss')
+    slump = random_hit()
+    if(is_open(targets[target]) == False):
+        if(slump == True):
+            close_target(target, targets)
+            return 'Hit on open target'
+        else:
+            return 'Miss'
 
+    else:
+        return 'Hit on closed target'
+    
 ####################### Testfall
 ### Test is open
 #a = open()
@@ -131,3 +168,34 @@ def shoot(targets, target):
 #ts = new_targets()
 #view_targets(ts)
 #shoot(ts, 0)
+
+### Test Felix kod
+#print(target_to_string(open()))
+#print(target_to_string(closed()))
+t = new_targets()
+print(t)
+print(targets_to_string(t))
+close_target(0, t)
+print(targets_to_string(t))
+close_target(3, t)
+print(targets_to_string(t))
+#ts = new_targets()
+#print(view_targets(ts))
+#close_target(0, ts)
+#print(view_targets(ts))
+#close_target(2, ts)
+#print(view_targets(ts))
+
+### Test shoot
+#ts = new_targets()
+#view_targets(ts)
+#print(shoot(ts, 0))
+#view_targets(ts)
+#print(shoot(ts, 0))
+#view_targets(ts)
+#print(shoot(ts, 4))
+#view_targets(ts)
+#print(shoot(ts, 4))
+#view_targets(ts)
+#print(shoot(ts, 4))
+#view_targets(ts)

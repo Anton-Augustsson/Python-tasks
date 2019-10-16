@@ -1,7 +1,8 @@
 from random import randint
-
-#exec(open("biathlon.py").read())
 import time
+
+# exec(open("biathlon.py").read())
+
 
 ###########################  Me having fun with welcome splash screen
     
@@ -12,7 +13,10 @@ def blank_screen(times, sleep):
         
 def logo(n):
     blank_screen(4, 0)
-    print(f"{n}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n{n}             Biathlon \n{n}           one hit a way \n\n{n}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n")
+    print(f"{n} ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~") 
+    print(f"{n}            Biathlon ")
+    print(f"{n}          one hit a way")
+    print(f"{n} ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     blank_screen(2, 0)
 
 def bouncing_logo(c):
@@ -26,6 +30,7 @@ def bouncing_logo(c):
             time.sleep(0.005)
             print(f"{d}Biathlon {d}", end="\r")  # Makes the string go back and forth on the same plase 
     time.sleep(2)
+    blank_screen(1, 2)
 
 def what_is(game_title):
     for n in game_title:
@@ -48,13 +53,12 @@ def splash_extra():
     what_is(game_title)  
     it_is(game_title)  
     bouncing_logo(c)  
-    logo("")  
+    logo(" ")  
     
 ###########################
 
 def splash():
     splash_extra()
-    #print(' ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n             Biathlon \n           one hit a way \n\n ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
     
 def open():
     return 0
@@ -146,8 +150,8 @@ def main():
     print('You got 5 shots\n')
     ts = new_targets()
     view_targets(ts)
-    for n in range(1, 6):
-        while True:
+    for n in range(1, 6):  # 5 valid shots
+        while True:  # Loops until valid target
             shot = input(f"\n\n Shot nr {n} at: ")
             valid_shot = parse_target(shot)
             if(valid_shot == None):

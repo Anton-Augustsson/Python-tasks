@@ -235,3 +235,5 @@ main()
 #print(shoot(ts, 4))
 #view_targets(ts)
 
+### Emacs C-c C-p
+#exec(open("biathlon.py").read())

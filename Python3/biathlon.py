@@ -1,9 +1,6 @@
 from random import randint
 import time
 
-# exec(open("biathlon.py").read())
-
-
 ###########################  Me having fun with welcome splash screen
     
 def blank_screen(times, sleep):
